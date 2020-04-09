@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="DemoXamarinBLE.Vista.VistaServicios"
+             Visual="Material">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand">
+            <!-- etiqueta de estatus -->
+            <StackLayout HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Padding="10"
+                         Spacing="15">
+                <Label Text="Servicios encontrados para el dispositivo seleccionado"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="FillAndExpand"
+                       FontSize="18"></Label>
+
+                <CollectionView ItemsSource="{Binding modelo.ListaServicios}"
+                            HorizontalOptions="FillAndExpand"
+                            ItemsLayout="VerticalList"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding modelo.ServicioSeleccionado}"
+                            SelectionChangedCommand="{Binding CmdSeleccionaServicio}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Spacing="10"
+                                     Padding="10">
+                                <Label Text="Nombre:"
+                                   FontSize="20"></Label>
+                                <Label Text="{Binding Name}"
+                                   FontSize="17"></Label>
+
+                                <Label Text="Id:"
+                                   FontSize="20"></Label>
+                                <Label Text="{Binding Id}"
+                                   FontSize="13"></Label>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.EmptyView>
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand">
+                            <Label FontSize="19"
+                               Text="Lista sin elementos"></Label>
+                        </StackLayout>
+                    </CollectionView.EmptyView>
+                </CollectionView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
